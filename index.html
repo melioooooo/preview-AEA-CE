@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esport playIN Grand-Est - FC26</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CHARTE GRAPHIQUE --- */
+        :root {
+            --ce-red: #CE0033;
+            --ce-dark-red: #a30029;
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --text-white: #FFFFFF;
+            --text-grey: #B0B0B0;
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        h1,
+        h2,
+        h3,
+        .btn,
+        label {
+            font-family: 'Roboto Condensed', sans-serif;
+            text-transform: sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utilitaires de navigation (SPA) */
+        .view-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- COMPOSANTS UI --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 35px;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--ce-red);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--ce-dark-red);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--bg-dark);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--ce-red);
+            font-weight: 700;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        .logo-header-ce {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-header-aea {
+            height: 40px;
+            width: auto;
+            opacity: 0.9;
+            object-fit: contain;
+        }
+
+        .divider {
+            width: 1px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('assets/images/hero_bg.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.4) 50%, var(--bg-dark) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            background-color: var(--ce-red);
+            color: white;
+            padding: 5px 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 span {
+            color: var(--ce-red);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #E0E0E0;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* --- RÈGLEMENT HIGHLIGHT --- */
+        .rules-bar {
+            background: #1A1A1A;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            padding: 30px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .rules-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .rules-text h3 {
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .rules-text p {
+            color: var(--text-grey);
+            font-size: 0.9rem;
+        }
+
+        /* --- VIDEO TEASER --- */
+        .video-section {
+            padding: 80px 0;
+            background-color: var(--bg-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .video-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .video-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .video-text p {
+            color: var(--text-grey);
+            margin-bottom: 30px;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 533px;
+            background-color: #000;
+            border-radius: 40px;
+            border: 8px solid #333;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            position: relative;
+        }
+
+        .play-btn-overlay {
+            width: 60px;
+            height: 60px;
+            background: rgba(206, 0, 51, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .play-btn-overlay:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- STEPS / CONCEPT --- */
+        .steps {
+            padding: 80px 0;
+            background: var(--bg-dark);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .step-item {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-left: 4px solid var(--ce-red);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-item:hover {
+            background: #252525;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .step-num {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            line-height: 1;
+        }
+
+        .step-icon {
+            color: var(--ce-red);
+            font-size: 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+        }
+
+        .hoplan-logo-step {
+            height: 60px;
+            /* Taille ajustée pour le logo HopLan */
+            width: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            box-shadow: 0 0 15px rgba(206, 0, 51, 0.3);
+            /* Lueur subtile rouge */
+        }
+
+        /* --- VILLES / INSCRIPTION (HOME) --- */
+        .cities {
+            padding: 80px 0;
+            background: #0F0F0F;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .city-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .city-card:hover {
+            border-color: var(--ce-red);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .city-img {
+            height: 300px;
+            background-color: #333;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            transition: 0.5s;
+        }
+
+        .city-card:hover .city-img {
+            transform: scale(1.05);
+        }
+
+        .city-strasbourg .city-img {
+            background-image: url('assets/images/city_strasbourg.png');
+        }
+
+        .city-metz .city-img {
+            background-image: url('assets/images/city_metz.png');
+        }
+
+        .city-reims .city-img {
+            background-image: url('assets/images/city_reims.png');
+        }
+
+        .city-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(30, 30, 30, 1) 90%);
+        }
+
+        .city-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            z-index: 2;
+        }
+
+        .city-tag {
+            background: var(--ce-red);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .city-name {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            line-height: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .city-detail {
+            color: #ddd;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .city-btn {
+            width: 100%;
+            text-transform: uppercase;
+            border: 1px solid white;
+            background: transparent;
+        }
+
+        .city-card:hover .city-btn {
+            background: white;
+            color: black;
+        }
+
+
+        /* --- PAGE DÉDIÉE VILLE (Template) --- */
+        .city-page-header {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .city-page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.3) 0%, var(--bg-dark) 100%);
+        }
+
+        .city-page-content {
+            max-width: 800px;
+            margin: -100px auto 50px;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .registration-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--ce-red);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input {
+            margin-top: 4px;
+        }
+
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 60px 0 30px;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer-logo {
+            max-height: 60px;
+            margin-bottom: 20px;
+            opacity: 1;
+        }
+
+        .footer-links a {
+            color: #888;
+            margin-right: 20px;
+            text-decoration: underline;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .rules-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .video-wrapper {
+                flex-direction: column-reverse;
+            }
+
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-box {
+                padding: 20px;
+            }
+
+            .logo-header-ce {
+                height: 35px;
+            }
+
+            .logo-header-aea {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-content">
+            <div class="logo-group" onclick="showView('home')">
+                <img src="assets/images/logo_ce.png" alt="Caisse d'Épargne" class="logo-header-ce">
+                <div class="divider"></div>
+                <img src="assets/images/logo_aea.png" alt="Alsace Esport Arena" class="logo-header-aea">
+            </div>
+            <a href="#inscription" class="btn btn-primary"
+                onclick="showView('home'); document.getElementById('inscription').scrollIntoView();">S'INSCRIRE</a>
+        </div>
+    </header>
+
+    <!-- ========================================= -->
+    <!-- VIEW: HOME (Landing Page) -->
+    <!-- ========================================= -->
+    <main id="view-home" class="view-section active">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content" data-aos="fade-up">
+                <div class="hero-label">Compétition Officielle FC26</div>
+                <h1>ESPORT playIN<br><span>GRAND-EST</span></h1>
+                <p>Deviens le meilleur joueur du Grand-Est.<br>3 villes, 1 finale, et un ticket VIP pour la HopLan 2026
+                    à gagner.</p>
+
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="#inscription" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">JE
+                        PARTICIPE</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Règlement Highlight Bar -->
+        <div class="rules-bar">
+            <div class="container rules-content">
+                <div class="rules-text">
+                    <h3><i class="fa-solid fa-scale-balanced" style="color:var(--ce-red); margin-right:10px;"></i>
+                        RÈGLEMENT OFFICIEL</h3>
+                    <p>Format, éligibilité et détails des dotations. Lecture obligatoire avant inscription.</p>
+                </div>
+                <a href="RÈGLEMENT OFFICIEL – ESPORT playIN GRAND-EST – FC26.pdf" target="_blank"
+                    class="btn btn-outline">
+                    <i class="fa-solid fa-download" style="margin-right:10px;"></i> TÉLÉCHARGER LE PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- Video Teaser Section -->
+        <section class="video-section">
+            <div class="container video-wrapper">
+                <div class="phone-mockup" data-aos="fade-right">
+                    <div class="video-placeholder">
+                        <div class="play-btn-overlay">
+                            <i class="fa-solid fa-play" style="font-size: 1.2rem; margin:0;"></i>
+                        </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <span>Teaser 9:16</span><br>
+                            <small style="opacity: 0.5;">Insérer vidéo ici</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-text" data-aos="fade-left">
+                    <h2>PRÊT À ENTRER<br>DANS L'ARÈNE ?</h2>
+                    <p>Découvre l'ambiance des finales LAN et ce qui t'attend si tu te qualifies. Une production
+                        exclusive pour te plonger au cœur de la compétition.</p>
+                    <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                        <div>
+                            <strong style="font-size: 1.5rem; display:block;">12+</strong>
+                            <span style="font-size: 0.8rem; color:var(--text-grey);">Âge Minimum</span>
+                        </div>
+                        <div class="divider" style="height: 40px; background: #333;"></div>
+                        <div>
+                            <strong style="font-size: 1.5rem; display:block;">PS5</strong>
+                            <span style="font-size: 0.8rem; color:var(--text-grey);">Plateforme LAN</span>
+                        </div>
+                        <div class="divider" style="height: 40px; background: #333;"></div>
+                        <div>
+                            <strong style="font-size: 1.5rem; display:block; color:var(--ce-red);">0€</strong>
+                            <span style="font-size: 0.8rem; color:var(--text-grey);">Inscription</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concept / Steps (RE-ADDED) -->
+        <section class="steps">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 50px;">LE PARCOURS</h2>
+
+                <div class="steps-grid">
+                    <div class="step-item" data-aos="fade-up">
+                        <div class="step-header">
+                            <span class="step-num">01</span>
+                            <i class="fa-solid fa-wifi step-icon"></i>
+                        </div>
+                        <h3 class="step-title">QUALIFIERS ONLINE</h3>
+                        <p class="step-desc">Depuis chez toi. Choisis ta ville de cœur et tente de te qualifier sur
+                            FC26. Format BO1 à élimination directe.</p>
+                    </div>
+
+                    <div class="step-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-header">
+                            <span class="step-num">02</span>
+                            <i class="fa-solid fa-location-dot step-icon"></i>
+                        </div>
+                        <h3 class="step-title">FINALES RÉGIONALES</h3>
+                        <p class="step-desc">Les 12 meilleurs se retrouvent en LAN à Strasbourg, Metz ou Reims. Matériel
+                            pro et arbitrage officiel.</p>
+                    </div>
+
+                    <div class="step-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-header">
+                            <span class="step-num">03</span>
+                            <!-- HopLan Logo Insertion -->
+                            <img src="Hoplan_Logo_HD.jpg" alt="HopLan" class="hoplan-logo-step">
+                        </div>
+                        <h3 class="step-title">OBJECTIF HOPLAN</h3>
+                        <p class="step-desc">Les champions gagnent leur place tous frais payés (Transport, Hôtel, Slot)
+                            pour la grande HopLan 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inscription Block -->
+        <section id="inscription" class="cities">
+            <div class="container">
+                <h2 class="section-title">OÙ VEUX-TU JOUER ?</h2>
+                <p class="section-subtitle">SÉLECTIONNE TA VILLE DE QUALIFICATION</p>
+
+                <div class="cities-grid">
+
+                    <!-- Strasbourg Card -->
+                    <div class="city-card city-strasbourg" data-aos="fade-up" onclick="showView('strasbourg')">
+                        <div class="city-img"></div>
+                        <div class="city-overlay"></div>
+                        <div class="city-content">
+                            <span class="city-tag">67 - BAS RHIN</span>
+                            <h3 class="city-name">STRASBOURG</h3>
+                            <p class="city-detail">Qualifier Online: 12 Octobre</p>
+                            <button class="btn city-btn">S'INSCRIRE</button>
+                        </div>
+                    </div>
+
+                    <!-- Metz Card -->
+                    <div class="city-card city-metz" data-aos="fade-up" data-aos-delay="100" onclick="showView('metz')">
+                        <div class="city-img"></div>
+                        <div class="city-overlay"></div>
+                        <div class="city-content">
+                            <span class="city-tag">57 - MOSELLE</span>
+                            <h3 class="city-name">METZ</h3>
+                            <p class="city-detail">Qualifier Online: 19 Octobre</p>
+                            <button class="btn city-btn">S'INSCRIRE</button>
+                        </div>
+                    </div>
+
+                    <!-- Reims Card -->
+                    <div class="city-card city-reims" data-aos="fade-up" data-aos-delay="200"
+                        onclick="showView('reims')">
+                        <div class="city-img"></div>
+                        <div class="city-overlay"></div>
+                        <div class="city-content">
+                            <span class="city-tag">51 - MARNE</span>
+                            <h3 class="city-name">REIMS</h3>
+                            <p class="city-detail">Qualifier Online: 26 Octobre</p>
+                            <button class="btn city-btn">S'INSCRIRE</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- VIEW: STRASBOURG -->
+    <!-- ========================================= -->
+    <main id="view-strasbourg" class="view-section">
+        <div class="city-page-header" style="background-image: url('assets/images/city_strasbourg.png');">
+            <div class="container" style="position:relative; z-index:2; text-align:center;">
+                <h1 style="font-size: 3.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.6);">STRASBOURG</h1>
+                <p style="font-size: 1.2rem; color: #ddd;">playIN DÉPARTEMENT 67</p>
+            </div>
+        </div>
+
+        <div class="city-page-content">
+            <button class="btn btn-back" onclick="showView('home')"><i class="fa-solid fa-arrow-left"></i>
+                RETOUR</button>
+
+            <div class="registration-box">
+                <h2 style="margin-bottom: 20px; color: var(--ce-red);">FORMULAIRE D'INSCRIPTION</h2>
+                <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
+                    qualifier de Strasbourg. Assure-toi d'être disponible le jour J.</p>
+
+                <form
+                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Strasbourg !'); showView('home');">
+                    <div class="form-group">
+                        <label class="form-label">Nom complet</label>
+                        <input type="text" class="form-input" placeholder="Ex: Jean Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Ex: jean.dupont@email.com" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo EA ID</label>
+                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date de Naissance</label>
+                            <input type="date" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rgpd-s" required>
+                        <label for="rgpd-s">J'accepte le règlement officiel et j'autorise l'AEA à traiter mes données
+                            pour l'organisation du tournoi.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">VALIDER MON INSCRIPTION</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- VIEW: METZ -->
+    <!-- ========================================= -->
+    <main id="view-metz" class="view-section">
+        <div class="city-page-header" style="background-image: url('assets/images/city_metz.png');">
+            <div class="container" style="position:relative; z-index:2; text-align:center;">
+                <h1 style="font-size: 3.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.6);">METZ</h1>
+                <p style="font-size: 1.2rem; color: #ddd;">playIN DÉPARTEMENT 57</p>
+            </div>
+        </div>
+
+        <div class="city-page-content">
+            <button class="btn btn-back" onclick="showView('home')"><i class="fa-solid fa-arrow-left"></i>
+                RETOUR</button>
+
+            <div class="registration-box">
+                <h2 style="margin-bottom: 20px; color: var(--ce-red);">FORMULAIRE D'INSCRIPTION</h2>
+                <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
+                    qualifier de Metz.</p>
+
+                <form
+                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Metz !'); showView('home');">
+                    <div class="form-group">
+                        <label class="form-label">Nom complet</label>
+                        <input type="text" class="form-input" placeholder="Ex: Marie Martin" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Ex: marie@email.com" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo EA ID</label>
+                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date de Naissance</label>
+                            <input type="date" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rgpd-m" required>
+                        <label for="rgpd-m">J'accepte le règlement officiel et j'autorise l'AEA à traiter mes
+                            données.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">VALIDER MON INSCRIPTION</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================= -->
+    <!-- VIEW: REIMS -->
+    <!-- ========================================= -->
+    <main id="view-reims" class="view-section">
+        <div class="city-page-header" style="background-image: url('assets/images/city_reims.png');">
+            <div class="container" style="position:relative; z-index:2; text-align:center;">
+                <h1 style="font-size: 3.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.6);">REIMS</h1>
+                <p style="font-size: 1.2rem; color: #ddd;">playIN DÉPARTEMENT 51</p>
+            </div>
+        </div>
+
+        <div class="city-page-content">
+            <button class="btn btn-back" onclick="showView('home')"><i class="fa-solid fa-arrow-left"></i>
+                RETOUR</button>
+
+            <div class="registration-box">
+                <h2 style="margin-bottom: 20px; color: var(--ce-red);">FORMULAIRE D'INSCRIPTION</h2>
+                <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
+                    qualifier de Reims.</p>
+
+                <form
+                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Reims !'); showView('home');">
+                    <div class="form-group">
+                        <label class="form-label">Nom complet</label>
+                        <input type="text" class="form-input" placeholder="Ex: Lucas Bernard" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="Ex: lucas@email.com" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo EA ID</label>
+                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date de Naissance</label>
+                            <input type="date" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="rgpd-r" required>
+                        <label for="rgpd-r">J'accepte le règlement officiel et j'autorise l'AEA à traiter mes
+                            données.</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">VALIDER MON INSCRIPTION</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" style="text-align: center;">
+            <div style="margin-bottom: 30px; opacity: 1;">
+                <img src="AEA_LOGO_2019.png" alt="AEA" class="footer-logo">
+            </div>
+
+            <p style="margin-bottom: 20px;">
+                Esports Play-Ins Grand Est - Une initiative pour le développement de l'esport amateur.<br>
+                Organisé par Alsace Esport Arena avec le soutien de la Caisse d'Épargne Grand Est Europe.
+            </p>
+
+            <div class="footer-links">
+                <a href="RÈGLEMENT OFFICIEL – ESPORTS PLAY-INS GRAND EST – FC26.pdf" target="_blank">Règlement
+                    Officiel</a>
+                <a href="#">Mentions Légales</a>
+                <a href="mailto:contact@alsaceesportarena.com">Contact</a>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 0.8rem; color: #444;">
+                Ce tournoi n'est pas affilié à Electronic Arts Inc.
+                <br>© 2025 Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Système de navigation SPA simple
+        function showView(viewName) {
+            // Cacher toutes les vues
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Afficher la vue demandée
+            const targetView = document.getElementById('view-' + viewName);
+            if (targetView) {
+                targetView.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+</body>
+
+</html>
