@@ -448,8 +448,10 @@
         }
 
         .platform-logo.xbox-logo {
-            height: 60px;
-            /* Even bigger size for Xbox as requested */
+            height: 120px;
+            /* Massive increase as requested */
+            margin-left: -10px;
+            /* Adjusting for potential whitespace in asset */
         }
 
         /* --- VILLES / INSCRIPTION (HOME) --- */
@@ -619,17 +621,67 @@
             border-color: var(--ce-red);
         }
 
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 20px;
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 40px;
         }
 
-        .checkbox-group input {
-            margin-top: 4px;
+        /* --- MODAL CONFIRMATION --- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--ce-red);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(206, 0, 51, 0.3);
+        }
+
+        .modal-title {
+            color: var(--ce-red);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .summary-label {
+            color: #777;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .summary-value {
+            color: white;
+            font-size: 1rem;
         }
 
 
@@ -919,25 +971,44 @@
                 <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
                     qualifier de Strasbourg. Assure-toi d'être disponible le jour J.</p>
 
-                <form
-                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Strasbourg !'); showView('home');">
+                <form onsubmit="submitRegistration(event, 'Strasbourg')">
                     <div class="form-group">
                         <label class="form-label">Nom complet</label>
-                        <input type="text" class="form-input" placeholder="Ex: Jean Dupont" required>
+                        <input type="text" name="name" class="form-input" placeholder="Ex: Jean Dupont" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="Ex: jean.dupont@email.com" required>
+                        <input type="email" name="email" class="form-input" placeholder="Ex: jean.dupont@email.com"
+                            required>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label class="form-label">Pseudo EA ID</label>
-                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                            <input type="text" name="eaid" class="form-input" placeholder="Ton ID FC26" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Date de Naissance</label>
-                            <input type="date" class="form-input" required>
+                            <input type="date" name="birthdate" class="form-input" required>
                         </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo Discord</label>
+                            <input type="text" name="discord" class="form-input" placeholder="Ex: Jean#1234" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Numéro de téléphone</label>
+                            <input type="tel" name="phone" class="form-input" placeholder="Ex: 06 12 34 56 78" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirme ta ville de qualification</label>
+                        <select name="city" class="form-input" required>
+                            <option value="">-- Sélectionne une ville --</option>
+                            <option value="Reims">Reims - 18 Avril 2026</option>
+                            <option value="Strasbourg" selected>Strasbourg - 23 Mai 2026</option>
+                            <option value="Metz">Metz - 20 Juin 2026</option>
+                        </select>
                     </div>
 
                     <div class="checkbox-group">
@@ -973,25 +1044,43 @@
                 <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
                     qualifier de Metz.</p>
 
-                <form
-                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Metz !'); showView('home');">
+                <form onsubmit="submitRegistration(event, 'Metz')">
                     <div class="form-group">
                         <label class="form-label">Nom complet</label>
-                        <input type="text" class="form-input" placeholder="Ex: Marie Martin" required>
+                        <input type="text" name="name" class="form-input" placeholder="Ex: Marie Martin" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="Ex: marie@email.com" required>
+                        <input type="email" name="email" class="form-input" placeholder="Ex: marie@email.com" required>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label class="form-label">Pseudo EA ID</label>
-                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                            <input type="text" name="eaid" class="form-input" placeholder="Ton ID FC26" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Date de Naissance</label>
-                            <input type="date" class="form-input" required>
+                            <input type="date" name="birthdate" class="form-input" required>
                         </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo Discord</label>
+                            <input type="text" name="discord" class="form-input" placeholder="Ex: Marie#5678" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Numéro de téléphone</label>
+                            <input type="tel" name="phone" class="form-input" placeholder="Ex: 06 98 76 54 32" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirme ta ville de qualification</label>
+                        <select name="city" class="form-input" required>
+                            <option value="">-- Sélectionne une ville --</option>
+                            <option value="Reims">Reims - 18 Avril 2026</option>
+                            <option value="Strasbourg">Strasbourg - 23 Mai 2026</option>
+                            <option value="Metz" selected>Metz - 20 Juin 2026</option>
+                        </select>
                     </div>
 
                     <div class="checkbox-group">
@@ -1026,25 +1115,43 @@
                 <p style="margin-bottom: 30px; color: #aaa;">Remplis ce formulaire pour valider ta participation au
                     qualifier de Reims.</p>
 
-                <form
-                    onsubmit="event.preventDefault(); alert('Inscription enregistrée pour Reims !'); showView('home');">
+                <form onsubmit="submitRegistration(event, 'Reims')">
                     <div class="form-group">
                         <label class="form-label">Nom complet</label>
-                        <input type="text" class="form-input" placeholder="Ex: Lucas Bernard" required>
+                        <input type="text" name="name" class="form-input" placeholder="Ex: Lucas Bernard" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="Ex: lucas@email.com" required>
+                        <input type="email" name="email" class="form-input" placeholder="Ex: lucas@email.com" required>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label class="form-label">Pseudo EA ID</label>
-                            <input type="text" class="form-input" placeholder="Ton ID FC26" required>
+                            <input type="text" name="eaid" class="form-input" placeholder="Ton ID FC26" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Date de Naissance</label>
-                            <input type="date" class="form-input" required>
+                            <input type="date" name="birthdate" class="form-input" required>
                         </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label">Pseudo Discord</label>
+                            <input type="text" name="discord" class="form-input" placeholder="Ex: Lucas#7890" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Numéro de téléphone</label>
+                            <input type="tel" name="phone" class="form-input" placeholder="Ex: 06 11 22 33 44" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirme ta ville de qualification</label>
+                        <select name="city" class="form-input" required>
+                            <option value="">-- Sélectionne une ville --</option>
+                            <option value="Reims" selected>Reims - 18 Avril 2026</option>
+                            <option value="Strasbourg">Strasbourg - 23 Mai 2026</option>
+                            <option value="Metz">Metz - 20 Juin 2026</option>
+                        </select>
                     </div>
 
                     <div class="checkbox-group">
@@ -1087,9 +1194,22 @@
         </div>
     </footer>
 
+    <div id="summary-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 class="modal-title">INSCRIPTION RÉUSSIE !</h2>
+            <div id="summary-details">
+                <!-- Data will be injected here -->
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="closeModal()">FERMER</button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({
+            duration: 800,
+            once: true
+        });
 
         // Système de navigation SPA simple
         function showView(viewName) {
@@ -1104,6 +1224,36 @@
                 targetView.classList.add('active');
                 window.scrollTo(0, 0);
             }
+        }
+
+        function submitRegistration(event, defaultCity) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            const summaryHtml = `
+                <div class="summary-grid">
+                    <span class="summary-label">Nom</span> <span class="summary-value">${data.name}</span>
+                    <span class="summary-label">Email</span> <span class="summary-value">${data.email}</span>
+                    <span class="summary-label">EA ID</span> <span class="summary-value">${data.eaid}</span>
+                    <span class="summary-label">Naissance</span> <span class="summary-value">${data.birthdate}</span>
+                    <span class="summary-label">Discord</span> <span class="summary-value">${data.discord}</span>
+                    <span class="summary-label">Téléphone</span> <span class="summary-value">${data.phone}</span>
+                    <span class="summary-label">Ville</span> <span class="summary-value" style="color:var(--ce-red); font-weight:900;">${data.city}</span>
+                </div>
+                <p style="text-align:center; color:#aaa; font-size:0.9rem; margin-bottom:20px;">
+                    Un email de confirmation vous sera envoyé prochainement.
+                </p>
+            `;
+
+            document.getElementById('summary-details').innerHTML = summaryHtml;
+            document.getElementById('summary-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('summary-modal').classList.remove('active');
+            showView('home');
         }
     </script>
 </body>
