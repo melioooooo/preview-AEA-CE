@@ -433,6 +433,20 @@
             /* Lueur subtile rouge */
         }
 
+        .platform-logos {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .platform-logo {
+            height: 25px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+
         /* --- VILLES / INSCRIPTION (HOME) --- */
         .cities {
             padding: 80px 0;
@@ -759,7 +773,8 @@
 
                 <div class="video-text" data-aos="fade-left">
                     <h2>PRÊT À ENTRER<br>DANS L'ARÈNE ?</h2>
-                    <p>Tente ta qualif et prépare toi à vivre une expérience esportive professionelle grâce à la Caisse d'Epargne. Une production
+                    <p>Tente ta qualif et prépare toi à vivre une expérience esportive professionelle grâce à la Caisse
+                        d'Epargne. Une production
                         exclusive pour te plonger au cœur de la compétition.</p>
                     <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
                         <div>
@@ -790,10 +805,15 @@
                     <div class="step-item" data-aos="fade-up">
                         <div class="step-header">
                             <span class="step-num">01</span>
-                            <i class="fa-solid fa-wifi step-icon"></i>
+                            <div class="platform-logos">
+                                <img src="assets/images/logo_ps5.png" alt="PS5" class="platform-logo">
+                                <img src="assets/images/logo_xbox.png" alt="Xbox" class="platform-logo">
+                                <img src="assets/images/logo_pc.png" alt="PC" class="platform-logo">
+                            </div>
                         </div>
                         <h3 class="step-title">QUALIFIERS ONLINE</h3>
-                        <p class="step-desc">De chez toi, tente de remporter ta place pour la deuxième étape qualificative dans une des 3 villes proposées. Format BO1 à élimination directe.</p>
+                        <p class="step-desc">De chez toi, tente de remporter ta place pour la deuxième étape
+                            qualificative dans une des 3 villes proposées. Format BO1 à élimination directe.</p>
                     </div>
 
                     <div class="step-item" data-aos="fade-up" data-aos-delay="100">
@@ -802,7 +822,8 @@
                             <i class="fa-solid fa-location-dot step-icon"></i>
                         </div>
                         <h3 class="step-title">FINALES RÉGIONALES</h3>
-                        <p class="step-desc">Le top 12 de chaque étape online se retrouvera en LAN à Strasbourg, Metz ou Reims. Matériel
+                        <p class="step-desc">Le top 12 de chaque étape online se retrouvera en LAN à Strasbourg, Metz ou
+                            Reims. Matériel
                             pro et arbitrage officiel.</p>
                     </div>
 
@@ -813,8 +834,10 @@
                             <img src="assets/images/logo_hoplan.png" alt="HopLan" class="hoplan-logo-step">
                         </div>
                         <h3 class="step-title">OBJECTIF HOPLAN</h3>
-                        <p class="step-desc">Les champions de chaque ville étape gagneront leur place tous frais payés (Transport, Repas, Ticket d'entrée, maillot personnalisé)
-                            pour le tournoi FC26 de la HopLan 2026 qui se tiendra à Strasbourg le samedi 18 Juillet 2026.</p>
+                        <p class="step-desc">Les champions de chaque ville étape gagneront leur place tous frais payés
+                            (Transport, Repas, Ticket d'entrée, maillot personnalisé)
+                            pour le tournoi FC26 de la HopLan 2026 qui se tiendra à Strasbourg le samedi 18 Juillet
+                            2026.</p>
                     </div>
                 </div>
             </div>
@@ -828,8 +851,21 @@
 
                 <div class="cities-grid">
 
+                    <!-- Reims Card -->
+                    <div class="city-card city-reims" data-aos="fade-up" onclick="showView('reims')">
+                        <div class="city-img"></div>
+                        <div class="city-overlay"></div>
+                        <div class="city-content">
+                            <span class="city-tag">51 - MARNE</span>
+                            <h3 class="city-name">REIMS</h3>
+                            <p class="city-detail">Samedi 18 Avril 2026</p>
+                            <button class="btn city-btn">S'INSCRIRE</button>
+                        </div>
+                    </div>
+
                     <!-- Strasbourg Card -->
-                    <div class="city-card city-strasbourg" data-aos="fade-up" onclick="showView('strasbourg')">
+                    <div class="city-card city-strasbourg" data-aos="fade-up" data-aos-delay="100"
+                        onclick="showView('strasbourg')">
                         <div class="city-img"></div>
                         <div class="city-overlay"></div>
                         <div class="city-content">
@@ -841,26 +877,13 @@
                     </div>
 
                     <!-- Metz Card -->
-                    <div class="city-card city-metz" data-aos="fade-up" data-aos-delay="100" onclick="showView('metz')">
+                    <div class="city-card city-metz" data-aos="fade-up" data-aos-delay="200" onclick="showView('metz')">
                         <div class="city-img"></div>
                         <div class="city-overlay"></div>
                         <div class="city-content">
                             <span class="city-tag">57 - MOSELLE</span>
                             <h3 class="city-name">METZ</h3>
                             <p class="city-detail">Samedi 20 Juin 2026</p>
-                            <button class="btn city-btn">S'INSCRIRE</button>
-                        </div>
-                    </div>
-
-                    <!-- Reims Card -->
-                    <div class="city-card city-reims" data-aos="fade-up" data-aos-delay="200"
-                        onclick="showView('reims')">
-                        <div class="city-img"></div>
-                        <div class="city-overlay"></div>
-                        <div class="city-content">
-                            <span class="city-tag">51 - MARNE</span>
-                            <h3 class="city-name">REIMS</h3>
-                            <p class="city-detail">Samedi 18 Avril 2026</p>
                             <button class="btn city-btn">S'INSCRIRE</button>
                         </div>
                     </div>
@@ -913,7 +936,8 @@
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="rgpd-s" required>
-                        <label for="rgpd-s">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me contacter
+                        <label for="rgpd-s">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me
+                            contacter
                             pour l'organisation du tournoi.</label>
                     </div>
 
@@ -966,7 +990,8 @@
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="rgpd-m" required>
-                        <label for="rgpd-m">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me contacter pour l'organisation du tournoi.</label>
+                        <label for="rgpd-m">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me
+                            contacter pour l'organisation du tournoi.</label>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%;">VALIDER MON INSCRIPTION</button>
@@ -1018,7 +1043,8 @@
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="rgpd-r" required>
-                        <label for="rgpd-r">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me contacter pour l'organisation du tournoi.</label>
+                        <label for="rgpd-r">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me
+                            contacter pour l'organisation du tournoi.</label>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%;">VALIDER MON INSCRIPTION</button>
