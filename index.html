@@ -233,41 +233,57 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-logo {
+            max-width: 550px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .hero-label {
             background-color: var(--ce-red);
             color: white;
-            padding: 5px 15px;
+            padding: 8px 18px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 20px;
-            border-radius: 2px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            line-height: 1;
-            margin-bottom: 25px;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-logo {
-            max-width: 600px;
-            width: 100%;
-            height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+            margin-bottom: 30px;
+            border-radius: 4px;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(206, 0, 51, 0.3);
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #E0E0E0;
             margin-bottom: 40px;
             font-weight: 300;
+            max-width: 700px;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* --- RÈGLEMENT HIGHLIGHT --- */
@@ -847,11 +863,10 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container hero-content" data-aos="fade-up">
-                <div class="hero-label">Compétition FC26</div>
                 <img src="assets/images/logo_playin.png" alt="ESPORT playIN GRAND-EST" class="hero-logo">
-                <p> Participe au tournoi esportif playIN Grand Est by Caisse d'Epargne.<br>3 villes, 1 finale, un ticket
-                    VIP pour la HopLan 2026
-                    à gagner et 1500€ de cashprize à la clé !</p>
+                <div class="hero-label">Compétition FC26</div>
+                <p>Participe au tournoi esportif playIN Grand Est by Caisse d'Epargne.<br>3 villes, 1 finale, un ticket
+                    VIP pour la HopLan 2026 à gagner et 1500€ de cashprize à la clé !</p>
 
                 <div style="display: flex; gap: 15px; justify-content: center;">
                     <a href="#inscription" class="btn btn-primary" style="padding: 15px 40px; font-size: 1.1rem;">JE
