@@ -830,12 +830,60 @@
                 padding: 20px;
             }
 
+            /* --- Header Responsive Fixes --- */
+            header {
+                padding: 10px 0;
+            }
+
+            .logo-group {
+                gap: 10px;
+            }
+
             .logo-header-ce {
-                height: 35px;
+                height: 30px;
+            }
+
+            .logo-header-hoplan {
+                height: 25px;
             }
 
             .logo-header-aea {
-                height: 30px;
+                height: 25px;
+            }
+
+            .divider {
+                height: 20px;
+            }
+
+            header .btn {
+                padding: 8px 15px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Extra small devices fix */
+        @media (max-width: 480px) {
+            .logo-group {
+                gap: 8px;
+            }
+
+            .logo-header-ce {
+                height: 25px;
+            }
+
+            .logo-header-hoplan,
+            .logo-header-aea {
+                height: 20px;
+            }
+
+            .divider {
+                display: none;
+                /* Hide dividers on very small screens to save space */
+            }
+
+            header .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
