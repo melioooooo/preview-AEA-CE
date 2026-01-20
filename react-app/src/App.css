@@ -1,0 +1,6 @@
+/* Global styles are in index.css */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
