@@ -8,7 +8,7 @@ import DiscordInvite from './DiscordInvite';
 
 const Home = () => {
     return (
-        <main id="view-home" className="view-section active">
+        <main id="view-home">
             <Hero />
             <RulesBar />
             <VideoTeaser />

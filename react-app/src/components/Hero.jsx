@@ -1,3 +1,6 @@
+import React from 'react';
+import { getAssetPath } from '../utils/paths';
+
 const Hero = () => {
     const bgUrl = getAssetPath('assets/images/hero_bg.png');
 
@@ -24,3 +27,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

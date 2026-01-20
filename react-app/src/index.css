@@ -14,6 +14,18 @@
     overflow-x: hidden;
 }
 
+/* Force visibility for all content - prevent WordPress theme conflicts */
+#playin-react-app,
+#playin-react-app .App,
+#playin-react-app main,
+#playin-react-app section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
 #playin-react-app * {
     margin: 0;
     padding: 0;
@@ -656,4 +668,107 @@
         flex-direction: column !important;
         gap: 15px !important;
     }
+}
+
+/* --- MODAL STYLES --- */
+#playin-react-app .modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 9999 !important;
+    padding: 20px !important;
+    animation: fadeIn 0.3s ease !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#playin-react-app .modal-content {
+    background: linear-gradient(145deg, #1E1E1E 0%, #151515 100%) !important;
+    border: 1px solid rgba(206, 0, 51, 0.3) !important;
+    border-radius: 16px !important;
+    padding: 40px !important;
+    max-width: 500px !important;
+    width: 100% !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(206, 0, 51, 0.1) !important;
+    animation: slideUp 0.4s ease !important;
+}
+
+#playin-react-app .modal-title {
+    text-align: center !important;
+    color: #fff !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 30px !important;
+    position: relative !important;
+    padding-bottom: 15px !important;
+}
+
+#playin-react-app .modal-title::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 60px !important;
+    height: 3px !important;
+    background: var(--ce-red) !important;
+    border-radius: 2px !important;
+}
+
+#playin-react-app .summary-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin-bottom: 25px !important;
+}
+
+#playin-react-app .summary-label {
+    padding: 12px 15px !important;
+    color: #888 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+#playin-react-app .summary-value {
+    padding: 12px 15px !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    display: flex !important;
+    align-items: center !important;
+    word-break: break-word !important;
+}
+
+#playin-react-app .summary-grid .summary-label:nth-last-child(2),
+#playin-react-app .summary-grid .summary-value:last-child {
+    border-bottom: none !important;
 }

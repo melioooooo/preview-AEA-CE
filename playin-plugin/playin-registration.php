@@ -112,8 +112,90 @@ function playin_plugin_handle_registration($request)
         update_post_meta($post_id, 'registration_phone', sanitize_text_field($params['phone']));
         update_post_meta($post_id, 'registration_city', sanitize_text_field($params['city']));
 
+        // Send confirmation email
+        playin_send_confirmation_email($params);
+
         return array('status' => 'success', 'message' => 'Registration saved', 'id' => $post_id);
     }
 
     return new WP_Error('save_failed', 'Failed to save registration', array('status' => 500));
 }
+
+/**
+ * Send confirmation email to the registered user
+ */
+function playin_send_confirmation_email($data)
+{
+    $to = sanitize_email($data['email']);
+    $name = sanitize_text_field($data['name']);
+    $city = sanitize_text_field($data['city']);
+    $eaid = sanitize_text_field($data['eaid']);
+    $discord = sanitize_text_field($data['discord']);
+
+    $subject = 'Confirmation d\'inscription - playIN Grand Est ' . $city;
+
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: playIN Grand Est <contact@alsacearena.com>'
+    );
+
+    $message = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; margin: 0; padding: 20px; }
+            .container { max-width: 600px; margin: 0 auto; background-color: #1E1E1E; border-radius: 8px; padding: 40px; }
+            .header { text-align: center; margin-bottom: 30px; }
+            .header h1 { color: #CE0033; margin: 0; font-size: 28px; }
+            .content p { line-height: 1.6; color: #B0B0B0; }
+            .details { background-color: #252525; padding: 20px; border-radius: 8px; margin: 20px 0; }
+            .details-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #333; }
+            .details-row:last-child { border-bottom: none; }
+            .label { color: #888; }
+            .value { color: #fff; font-weight: bold; }
+            .city-badge { display: inline-block; background-color: #CE0033; color: white; padding: 5px 15px; border-radius: 4px; font-weight: bold; }
+            .footer { text-align: center; margin-top: 30px; color: #666; font-size: 12px; }
+            .discord-link { display: inline-block; background-color: #5865F2; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; margin-top: 20px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🎮 INSCRIPTION CONFIRMÉE</h1>
+            </div>
+            
+            <div class="content">
+                <p>Bonjour <strong>' . esc_html($name) . '</strong>,</p>
+                <p>Félicitations ! Ton inscription au tournoi <strong>playIN Grand Est</strong> a bien été enregistrée.</p>
+                
+                <div class="details">
+                    <table width="100%" cellpadding="8" cellspacing="0">
+                        <tr><td class="label">Nom</td><td class="value">' . esc_html($name) . '</td></tr>
+                        <tr><td class="label">EA ID</td><td class="value">' . esc_html($eaid) . '</td></tr>
+                        <tr><td class="label">Discord</td><td class="value">' . esc_html($discord) . '</td></tr>
+                        <tr><td class="label">Ville</td><td class="value"><span class="city-badge">' . esc_html($city) . '</span></td></tr>
+                    </table>
+                </div>
+                
+                <p>Tu recevras prochainement toutes les informations concernant le déroulement du tournoi.</p>
+                <p>En attendant, rejoins notre serveur Discord pour rester informé et rencontrer les autres participants !</p>
+                
+                <div style="text-align: center;">
+                    <a href="https://discord.gg/aea" class="discord-link">Rejoindre le Discord</a>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <p>Organisé par l\'Alsace Esport Arena avec le soutien de la Caisse d\'Epargne Grand Est.</p>
+                <p>© 2026 playIN Grand Est - Tous droits réservés.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    ';
+
+    wp_mail($to, $subject, $message, $headers);
+}
+

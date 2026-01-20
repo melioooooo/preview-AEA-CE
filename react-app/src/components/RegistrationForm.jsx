@@ -60,7 +60,7 @@ const RegistrationForm = () => {
     };
 
     return (
-        <main className="view-section active">
+        <main>
             <div className="city-page-header" style={{ backgroundImage: `url(${getAssetPath(`assets/images/city_${cityId}.png`)})` }}>
                 <div className="playin-container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
                     <h1 style={{ fontSize: '3.5rem', textShadow: '0 4px 10px rgba(0,0,0,0.6)' }}>{cityName}</h1>
