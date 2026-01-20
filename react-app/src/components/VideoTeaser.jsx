@@ -5,7 +5,7 @@ const VideoTeaser = () => {
         <section className="video-section">
             <div className="playin-container">
                 <div className="video-wrapper">
-                    <div className="video-text" data-aos="fade-right">
+                    <div className="video-text">
                         <h2>DÉCOUVRE L'EXPÉRIENCE <span style={{ color: 'var(--ce-red)' }}>playIN</span></h2>
                         <p>Une compétition unique au cœur du Grand Est. Rejoins des centaines de joueurs et tente de devenir
                             le champion de ta région.</p>
@@ -25,7 +25,7 @@ const VideoTeaser = () => {
                         </ul>
                     </div>
 
-                    <div className="phone-mockup" data-aos="zoom-in">
+                    <div className="phone-mockup">
                         <div className="video-placeholder">
                             <div className="play-btn-overlay">
                                 <i className="fa-solid fa-play"></i>

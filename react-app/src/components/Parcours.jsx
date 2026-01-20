@@ -8,7 +8,7 @@ const Parcours = () => {
                 <h2 className="section-title" style={{ marginBottom: '50px' }}>LE PARCOURS</h2>
 
                 <div className="steps-grid">
-                    <div className="step-item" data-aos="fade-up">
+                    <div className="step-item">
                         <div className="step-header">
                             <span className="step-num">01</span>
                             <i className="fa-solid fa-wifi step-icon"></i>
@@ -24,7 +24,7 @@ const Parcours = () => {
                         </div>
                     </div>
 
-                    <div className="step-item" data-aos="fade-up" data-aos-delay="100">
+                    <div className="step-item">
                         <div className="step-header">
                             <span className="step-num">02</span>
                             <i className="fa-solid fa-location-dot step-icon"></i>
@@ -35,7 +35,7 @@ const Parcours = () => {
                             pro et arbitrage officiel.</p>
                     </div>
 
-                    <div className="step-item" data-aos="fade-up" data-aos-delay="200">
+                    <div className="step-item">
                         <div className="step-header">
                             <span className="step-num">03</span>
                             <img src={getAssetPath('assets/images/logo_hoplan.png')} alt="HopLan" className="hoplan-logo-step" />

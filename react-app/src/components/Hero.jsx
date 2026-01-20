@@ -1,17 +1,9 @@
-import React, { useEffect } from 'react';
-import AOS from 'aos';
-import { getAssetPath } from '../utils/paths';
-
 const Hero = () => {
-    useEffect(() => {
-        AOS.refresh();
-    }, []);
-
     const bgUrl = getAssetPath('assets/images/hero_bg.png');
 
     return (
         <section className="hero" style={{ backgroundImage: `url(${bgUrl})` }}>
-            <div className="playin-container hero-content" data-aos="fade-up">
+            <div className="playin-container hero-content">
                 <img src={getAssetPath('assets/images/logo_playin.png')} alt="ESPORT playIN GRAND-EST" className="hero-logo" />
                 <div className="hero-label">Compétition FC26</div>
                 <p>Participe au tournoi esportif playIN Grand Est by Caisse d'Epargne.<br />3 villes, 1 finale, un ticket
