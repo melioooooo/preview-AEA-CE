@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { getAssetPath } from '../utils/paths';
 
 const Footer = () => {
@@ -20,7 +20,7 @@ const Footer = () => {
                 <div className="footer-links">
                     <a href={getAssetPath('assets/RÈGLEMENT OFFICIEL – ESPORTS PLAY-INS GRAND EST – FC26.pdf')} target="_blank">Règlement
                         Officiel</a>
-                    <a href="#">Mentions Légales</a>
+                    <Link to="/legal">Mentions Légales</Link>
                     <a href="mailto:contact@alsacearena.com">Contact</a>
                 </div>
 

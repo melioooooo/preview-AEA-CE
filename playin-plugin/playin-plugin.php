@@ -285,7 +285,7 @@ function playin_send_confirmation_email($data)
             <p>C\'est ici que se feront les annonces officielles, les check-ins et le support durant toute la competition.</p>
             
             <div style="text-align: center;">
-                <a href="https://discord.gg/aea" class="discord-link">Rejoindre le Discord</a>
+                <a href="https://discord.gg/JF44rhdGQt" class="discord-link">Rejoindre le Discord</a>
             </div>
         </div>
         

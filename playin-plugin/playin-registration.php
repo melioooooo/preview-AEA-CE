@@ -213,6 +213,9 @@ function playin_plugin_handle_registration($request)
         // Send confirmation email
         playin_send_confirmation_email($params);
 
+        // Send admin notification
+        playin_send_admin_notification($params);
+
         return array('status' => 'success', 'message' => 'Registration saved', 'id' => $post_id);
     }
 
@@ -236,11 +239,11 @@ function playin_send_confirmation_email($data)
     $esc_eaid = esc_html($eaid);
     $esc_discord = esc_html($discord);
 
-    $subject = 'Confirmation d\'inscription - playIN Grand Est ' . $city;
+    $subject = 'Confirmation d\'inscription - Qualifer HopLan FC26 by Caisse d\'Epargne Grand Est' . $city;
 
     $headers = array(
         'Content-Type: text/html; charset=UTF-8',
-        'From: playIN Grand Est <contact@alsacearena.com>'
+        'From: HopLan <contact@alsacearena.com>'
     );
 
     $message = '<!DOCTYPE html>
@@ -269,7 +272,7 @@ function playin_send_confirmation_email($data)
         
         <div class="content">
             <p>Bonjour <strong>' . $esc_name . '</strong>,</p>
-            <p>Felicitations ! Ton inscription au tournoi <strong>qualificatif pour la HopLan 2026 sur FC26</strong> a bien ete enregistree.</p>
+            <p>Félicitations ! Ton inscription au tournoi <strong>qualificatif pour la HopLan 2026 sur FC26</strong> a bien été enregistrée.</p>
             
             <div class="details">
                 <table width="100%" cellpadding="8" cellspacing="0">
@@ -280,23 +283,68 @@ function playin_send_confirmation_email($data)
                 </table>
             </div>
             
-            <p>Tu recevras prochainement toutes les informations concernant le deroulement du tournoi.</p>
-            <p><strong>Il faut imperativement que tu rejoignes le Discord pour le bon fonctionnement du tournoi !</strong></p>
-            <p>C\'est ici que se feront les annonces officielles, les check-ins et le support durant toute la competition.</p>
+            <p>Tu recevras prochainement toutes les informations concernant le déroulement du tournoi.</p>
+            <p><strong>Il faut impérativement que tu rejoignes le Discord pour le bon fonctionnement du tournoi !</strong></p>
+            <p>C\'est ici que se feront les annonces officielles, les check-ins et le support durant toute la compétition.</p>
             
             <div style="text-align: center;">
-                <a href="https://discord.gg/aea" class="discord-link">Rejoindre le Discord</a>
+                <a href="https://discord.gg/JF44rhdGQt" class="discord-link">Rejoindre le Discord</a>
             </div>
         </div>
         
         <div class="footer">
             <p>Organise par l\'Alsace Esport Arena avec le soutien de la Caisse d\'Epargne Grand Est.</p>
-            <p>Tournoi qualificatif pour la HopLan 2026 by Caisse d\'Epargne Grand Est - Tous droits reserves.</p>
+            <p>Tournoi qualificatif pour la HopLan 2026 by Caisse d\'Epargne Grand Est - Tous droits réservés.</p>
         </div>
     </div>
 </body>
 </html>';
 
+
     return wp_mail($to, $subject, $message, $headers);
 }
+
+/**
+ * Send notification email to admin
+ */
+function playin_send_admin_notification($data)
+{
+    $to = 'quentin@alsacearena.com'; // Admin emails
+    $name = sanitize_text_field($data['name']);
+    $email = sanitize_email($data['email']);
+    $city = sanitize_text_field($data['city']);
+    $eaid = sanitize_text_field($data['eaid']);
+    $discord = sanitize_text_field($data['discord']);
+    $phone = sanitize_text_field($data['phone']);
+    $birthdate = sanitize_text_field($data['birthdate']);
+
+    $subject = 'Nouvelle Inscription Qualifier FC26 - ' . $city . ' - ' . $name;
+
+    $headers = array(
+        'Content-Type: text/html; charset=UTF-8',
+        'From: HopLan Qualifier FC26 <no-reply@alsacearena.com>'
+    );
+
+    $message = '<!DOCTYPE html>
+<html>
+<body>
+    <h2>Nouvelle Inscription Reçue</h2>
+    <p>Une nouvelle inscription vient d\'être validée pour l\'étape de <strong>' . $city . '</strong>.</p>
+    
+    <h3>Détails du joueur :</h3>
+    <ul>
+        <li><strong>Nom :</strong> ' . $name . '</li>
+        <li><strong>Email :</strong> ' . $email . '</li>
+        <li><strong>EA ID :</strong> ' . $eaid . '</li>
+        <li><strong>Discord :</strong> ' . $discord . '</li>
+        <li><strong>Date de naissance :</strong> ' . $birthdate . '</li>
+        <li><strong>Téléphone :</strong> ' . $phone . '</li>
+        <li><strong>Ville :</strong> ' . $city . '</li>
+    </ul>
+</body>
+</html>';
+
+    wp_mail($to, $subject, $message, $headers);
+}
+
 
