@@ -64,7 +64,7 @@ const RegistrationForm = () => {
             <div className="city-page-header" style={{ backgroundImage: `url(${getAssetPath(`assets/images/city_${cityId}.png`)})` }}>
                 <div className="playin-container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
                     <h1 style={{ fontSize: '3.5rem', textShadow: '0 4px 10px rgba(0,0,0,0.6)' }}>{cityName}</h1>
-                    <p style={{ fontSize: '1.2rem', color: '#ddd' }}>playIN DÉPARTEMENT {cityId === 'reims' ? '51' : cityId === 'metz' ? '57' : '67'}</p>
+                    <p style={{ fontSize: '1.2rem', color: '#ddd' }}>TOURNOI QUALIFICATIF DE {cityId === 'reims' ? 'REIMS' : cityId === 'metz' ? 'METZ' : 'STRASBOURG'}</p>
                 </div>
             </div>
 
@@ -113,7 +113,7 @@ const RegistrationForm = () => {
                             <select name="city" className="form-input" value={formData.city} onChange={handleChange} required>
                                 <option value="">-- Sélectionne une ville --</option>
                                 <option value="Reims">Reims - 18 Avril 2026</option>
-                                <option value="Metz">Metz - 3 Mai 2026</option>
+                                <option value="Metz">Metz - 30 Mai 2026</option>
                                 <option value="Strasbourg">Strasbourg - 20 Juin 2026</option>
                             </select>
                         </div>

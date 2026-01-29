@@ -7,12 +7,12 @@ const Footer = () => {
             <div className="playin-container" style={{ textAlign: 'center' }}>
                 <div className="footer-logos-container">
                     <img src={getAssetPath('assets/images/logo_ce_new.png')} alt="Caisse d'Épargne" className="footer-logo" />
-                    <img src={getAssetPath('assets/images/logo_hoplan.png')} alt="HopLan" className="footer-logo" />
+                    <img src={getAssetPath('assets/images/logo_playin.png')} alt="PlayIn" className="footer-logo" />
                     <img src={getAssetPath('assets/images/logo_aea.png')} alt="Alsace Esport Arena" className="footer-logo" />
                 </div>
 
                 <p style={{ marginBottom: '20px' }}>
-                    Esports Play In Grand Est - Une initiative pour le développement de l'esport amateur.<br />
+                    Tournoi de qualification de la HopLan 2026 by Caisse d’Epargne Grand Est Europe - Une initiative pour le développement de l'esport amateur.<br />
                     Organisé et administré par l'Alsace Esport Arena avec le soutien de la Caisse d'Epargne Grand Est. *CF
                     Règlement pour détail.
                 </p>

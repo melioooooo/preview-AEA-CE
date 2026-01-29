@@ -7,7 +7,7 @@ const Cities = () => {
 
     const cityData = [
         { id: 'reims', name: 'REIMS', date: '18 AVRIL 2026', tag: 'DÉPARTEMENT 51' },
-        { id: 'metz', name: 'METZ', date: '3 MAI 2026', tag: 'DÉPARTEMENT 57' },
+        { id: 'metz', name: 'METZ', date: '30 MAI 2026', tag: 'DÉPARTEMENT 57' },
         { id: 'strasbourg', name: 'STRASBOURG', date: '20 JUIN 2026', tag: 'DÉPARTEMENT 67' }
     ];
 

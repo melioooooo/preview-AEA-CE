@@ -38,17 +38,17 @@ const Parcours = () => {
                     <div className="step-item">
                         <div className="step-header">
                             <span className="step-num">03</span>
-                            <img src={getAssetPath('assets/images/logo_hoplan.png')} alt="HopLan" className="hoplan-logo-step" />
+                            <img src={getAssetPath('assets/images/logo_playin.png')} alt="PlayIn" className="hoplan-logo-step" />
                         </div>
                         <h3 className="step-title">OBJECTIF HOPLAN</h3>
                         <p className="step-desc">Les champions de chaque ville étape gagneront leur place tous frais payés*
                             (Transport, Repas, Ticket d'entrée, maillot personnalisé)
                             pour le tournoi FC26 de la HopLan 2026 qui se tiendra à Strasbourg le samedi 18 Juillet
-                            2026. La dotation du tournoi final sera de 1500€.</p>
+                            2026. La dotation du tournoi final sera de 1000€.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

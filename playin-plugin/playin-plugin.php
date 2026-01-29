@@ -269,7 +269,7 @@ function playin_send_confirmation_email($data)
         
         <div class="content">
             <p>Bonjour <strong>' . $esc_name . '</strong>,</p>
-            <p>Felicitations ! Ton inscription au tournoi <strong>qualificatif pour la HopLan 2026 sur FC26</strong> a bien ete enregistree.</p>
+            <p>Felicitations ! Ton inscription au tournoi <strong>playIN Grand Est</strong> a bien ete enregistree.</p>
             
             <div class="details">
                 <table width="100%" cellpadding="8" cellspacing="0">
@@ -291,7 +291,7 @@ function playin_send_confirmation_email($data)
         
         <div class="footer">
             <p>Organise par l\'Alsace Esport Arena avec le soutien de la Caisse d\'Epargne Grand Est.</p>
-            <p>Tournoi qualificatif pour la HopLan 2026 by Caisse d\'Epargne Grand Est - Tous droits reserves.</p>
+            <p>2026 playIN Grand Est - Tous droits reserves.</p>
         </div>
     </div>
 </body>
