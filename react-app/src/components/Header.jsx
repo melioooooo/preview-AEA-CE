@@ -15,15 +15,20 @@ const Header = () => {
                     <div className="divider"></div>
                     <img src={getAssetPath('assets/images/logo_ce_new.png')} alt="Caisse d'Épargne" className="logo-header-ce" />
                 </div>
-                <a href="#inscription" className="btn btn-primary" onClick={(e) => {
-                    e.preventDefault();
-                    navigate('/');
-                    setTimeout(() => {
-                        document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }}>
-                    S'INSCRIRE
-                </a>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                    <a href="https://hoplan.gg" className="btn btn-outline" style={{ padding: '8px 15px', fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+                        ACCUEIL
+                    </a>
+                    <a href="#inscription" className="btn btn-primary" onClick={(e) => {
+                        e.preventDefault();
+                        navigate('/');
+                        setTimeout(() => {
+                            document.getElementById('inscription')?.scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    }}>
+                        S'INSCRIRE
+                    </a>
+                </div>
             </div>
         </div>
     );

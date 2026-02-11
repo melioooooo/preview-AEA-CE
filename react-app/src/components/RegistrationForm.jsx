@@ -75,8 +75,11 @@ const RegistrationForm = () => {
 
                 <div className="registration-box">
                     <h2 style={{ marginBottom: '20px', color: 'var(--ce-red)' }}>FORMULAIRE D'INSCRIPTION</h2>
-                    <p style={{ marginBottom: '30px', color: '#aaa' }}>
+                    <p style={{ marginBottom: '10px', color: '#aaa' }}>
                         Remplis ce formulaire pour valider ta participation au qualifier de {formData.city}. Assure-toi d'être disponible le jour J.
+                    </p>
+                    <p style={{ marginBottom: '30px', color: '#888', fontSize: '0.85rem', fontStyle: 'italic' }}>
+                        (Pour les mineurs, à remplir par le représentant légal.)
                     </p>
 
                     <form onSubmit={handleSubmit}>
@@ -120,8 +123,13 @@ const RegistrationForm = () => {
 
                         <div className="checkbox-group">
                             <input type="checkbox" id="rgpd" required />
-                            <label htmlFor="rgpd">J'accepte le règlement officiel et j'autorise l'Alsace Esport Arena à me
+                            <label htmlFor="rgpd">J'accepte le <a href={getAssetPath('assets/reglement-complet-qualifiers-fc26-hoplan-2026.pdf')} target="_blank" style={{ color: 'var(--ce-red)', textDecoration: 'underline' }}>règlement officiel</a> et j'autorise l'Alsace Esport Arena à me
                                 contacter pour l'organisation du tournoi.</label>
+                        </div>
+
+                        <div className="checkbox-group">
+                            <input type="checkbox" id="commercial" />
+                            <label htmlFor="commercial">J'accepte de recevoir des propositions commerciales de la Caisse d'Epargne Grand Est Europe par mail.</label>
                         </div>
 
                         <button type="submit" className="btn btn-primary" style={{ width: '100%' }} disabled={isSubmitting}>

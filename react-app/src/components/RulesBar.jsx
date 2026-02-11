@@ -9,7 +9,7 @@ const RulesBar = () => {
                     <h3>RÈGLEMENT OFFICIEL</h3>
                     <p>Consulte les règles de la compétition pour chaque ville.</p>
                 </div>
-                <a href={getAssetPath('assets/RÈGLEMENT OFFICIEL – ESPORTS PLAY-INS GRAND EST – FC26.pdf')}
+                <a href={getAssetPath('assets/reglement-complet-qualifiers-fc26-hoplan-2026.pdf')}
                     target="_blank"
                     className="btn btn-outline">
                     TÉLÉCHARGER LE PDF

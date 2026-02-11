@@ -35,7 +35,7 @@ const VideoTeaser = () => {
                             position: 'relative'
                         }}>
                             <iframe
-                                src="https://www.youtube.com/embed/da8Wc7stByE?autoplay=0&rel=0&modestbranding=1"
+                                src="https://www.youtube.com/embed/3M2D09eqG_8?autoplay=0&rel=0&modestbranding=1"
                                 title="PlayIN Teaser"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

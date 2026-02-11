@@ -3,7 +3,7 @@
  * Plugin Name: PlayIN Registration App
  * Plugin URI: https://alsacearena.com
  * Description: Embeds the React-based PlayIN registration application via a shortcode.
- * Version: 1.1
+ * Version: 2.1
  * Author: Antigravity
  * Text Domain: playin-registration
  */
@@ -11,6 +11,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+// Include the export functionality
+require_once plugin_dir_path(__FILE__) . 'playin-export.php';
 
 /**
  * IDE SILENCING

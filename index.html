@@ -902,8 +902,12 @@
                 <div class="divider"></div>
                 <img src="assets/images/logo_aea.png" alt="Alsace Esport Arena" class="logo-header-aea">
             </div>
-            <a href="#inscription" class="btn btn-primary"
-                onclick="showView('home'); document.getElementById('inscription').scrollIntoView();">S'INSCRIRE</a>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="https://hoplan.gg" class="btn btn-outline"
+                    style="padding: 8px 15px; font-size: 0.85rem; white-space: nowrap;">ACCUEIL</a>
+                <a href="#inscription" class="btn btn-primary"
+                    onclick="showView('home'); document.getElementById('inscription').scrollIntoView();">S'INSCRIRE</a>
+            </div>
         </div>
     </header>
 
@@ -997,6 +1001,20 @@
                         <p class="step-desc">De chez toi, tente de remporter ta place pour la deuxième étape
                             qualificative dans une des 3 villes proposées. Format BO1 à élimination directe. NextGen
                             only & PC.</p>
+                        <div style="margin: 15px 0; font-size: 0.85rem; color: #ccc; line-height: 1.6;">
+                            <p style="margin-bottom: 4px;"><strong style="color: var(--ce-red);">Reims :</strong> 26
+                                mars — 6 avril</p>
+                            <p style="margin-bottom: 4px;"><strong style="color: var(--ce-red);">Metz :</strong> 30
+                                avril — 10 mai</p>
+                            <p style="margin-bottom: 4px;"><strong style="color: var(--ce-red);">Strasbourg :</strong>
+                                26 mai — 7 juin</p>
+                        </div>
+                        <p class="step-desc"
+                            style="font-size: 0.75rem; opacity: 0.7; font-style: italic; margin-top: 10px;">
+                            Selon le niveau de remplissage, les administrateurs se réservent le droit de modifier ou
+                            réajuster les dates. Les éventuelles modifications seront annoncées dans l'onglet « Annonce
+                            » du Discord.
+                        </p>
                         <div class="platform-logos">
                             <img src="assets/images/logo_ps5.png" alt="PS5" class="platform-logo ps5-logo">
                             <img src="assets/images/logo_xbox.png" alt="Xbox" class="platform-logo xbox-logo">
@@ -1047,6 +1065,14 @@
                             <span class="city-tag">51 - MARNE</span>
                             <h3 class="city-name">REIMS</h3>
                             <p class="city-detail">Samedi 18 Avril 2026</p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 5px; opacity: 0.85;">
+                                <i class="fa-solid fa-clock" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Fin des inscriptions : 23 MARS 2026
+                            </p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 15px; opacity: 0.85;">
+                                <i class="fa-solid fa-gamepad" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Online : 26 MARS — 6 AVRIL
+                            </p>
                             <button class="btn city-btn">S'INSCRIRE</button>
                         </div>
                     </div>
@@ -1058,7 +1084,15 @@
                         <div class="city-content">
                             <span class="city-tag">57 - MOSELLE</span>
                             <h3 class="city-name">METZ</h3>
-                            <p class="city-detail">Metz 3 Mai 2026</p>
+                            <p class="city-detail">Samedi 30 Mai 2026</p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 5px; opacity: 0.85;">
+                                <i class="fa-solid fa-clock" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Fin des inscriptions : 27 AVRIL 2026
+                            </p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 15px; opacity: 0.85;">
+                                <i class="fa-solid fa-gamepad" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Online : 30 AVRIL — 10 MAI
+                            </p>
                             <button class="btn city-btn">S'INSCRIRE</button>
                         </div>
                     </div>
@@ -1072,6 +1106,14 @@
                             <span class="city-tag">67 - BAS RHIN</span>
                             <h3 class="city-name">STRASBOURG</h3>
                             <p class="city-detail">Samedi 20 Juin 2026</p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 5px; opacity: 0.85;">
+                                <i class="fa-solid fa-clock" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Fin des inscriptions : 22 MAI 2026
+                            </p>
+                            <p class="city-detail" style="font-size: 0.85rem; margin-bottom: 15px; opacity: 0.85;">
+                                <i class="fa-solid fa-gamepad" style="margin-right: 5px; color: var(--ce-red);"></i>
+                                Online : 26 MAI — 7 JUIN
+                            </p>
                             <button class="btn city-btn">S'INSCRIRE</button>
                         </div>
                     </div>
@@ -1319,7 +1361,7 @@
 
             <p style="margin-bottom: 20px;">
                 Esports Play In Grand Est - Une initiative pour le développement de l'esport amateur.<br>
-                Organisé et administré par l'Alsace Esport Arena avec le soutien de la Caisse d'Epargne Grand Est. *CF
+                Organisé et administré par l'Alsace Esport Arena avec le soutien de la Caisse d'Epargne Grand Est. CF
                 Règlement pour détail.
             </p>
 

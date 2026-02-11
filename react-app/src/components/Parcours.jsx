@@ -17,6 +17,14 @@ const Parcours = () => {
                         <p className="step-desc">De chez toi, tente de remporter ta place pour la deuxième étape
                             qualificative dans une des 3 villes proposées. Format BO1 à élimination directe. NextGen
                             only & PC.</p>
+                        <div style={{ margin: '15px 0', fontSize: '0.85rem', color: '#ccc', lineHeight: '1.6' }}>
+                            <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Reims :</strong> 26 mars — 6 avril</p>
+                            <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Metz :</strong> 30 avril — 10 mai</p>
+                            <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Strasbourg :</strong> 26 mai — 7 juin</p>
+                        </div>
+                        <p className="step-desc" style={{ fontSize: '0.75rem', opacity: 0.7, fontStyle: 'italic', marginTop: '10px' }}>
+                            Selon le niveau de remplissage, les administrateurs se réservent le droit de modifier ou réajuster les dates. Les éventuelles modifications seront annoncées dans l'onglet « Annonce » du Discord.
+                        </p>
                         <div className="platform-logos">
                             <img src={getAssetPath('assets/images/logo_ps5.png')} alt="PS5" className="platform-logo ps5-logo" />
                             <img src={getAssetPath('assets/images/logo_xbox.png')} alt="Xbox" className="platform-logo xbox-logo" />

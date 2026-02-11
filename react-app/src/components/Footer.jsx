@@ -13,12 +13,13 @@ const Footer = () => {
 
                 <p style={{ marginBottom: '20px' }}>
                     Tournoi de qualification de la HopLan 2026 by Caisse d’Epargne Grand Est Europe - Une initiative pour le développement de l'esport amateur.<br />
-                    Organisé et administré par l'Alsace Esport Arena avec le soutien de la Caisse d'Epargne Grand Est. *CF
-                    Règlement pour détail.
+                    Organisé et administré par l'Alsace Esport Arena avec le soutien de la Caisse d'Epargne Grand Est Europe. CF{' '}
+                    <a href={getAssetPath('assets/reglement-complet-qualifiers-fc26-hoplan-2026.pdf')} target="_blank" style={{ color: 'var(--ce-red)', textDecoration: 'underline' }}>Règlement</a>{' '}
+                    pour détail.
                 </p>
 
                 <div className="footer-links">
-                    <a href={getAssetPath('assets/RÈGLEMENT OFFICIEL – ESPORTS PLAY-INS GRAND EST – FC26.pdf')} target="_blank">Règlement
+                    <a href={getAssetPath('assets/reglement-complet-qualifiers-fc26-hoplan-2026.pdf')} target="_blank">Règlement
                         Officiel</a>
                     <Link to="/legal">Mentions Légales</Link>
                     <a href="mailto:contact@alsacearena.com">Contact</a>
