@@ -6,9 +6,9 @@ const Cities = () => {
     const navigate = useNavigate();
 
     const cityData = [
-        { id: 'reims', name: 'REIMS', date: '18 AVRIL 2026', tag: 'DÉPARTEMENT 51', inscriptionEnd: '23 MARS 2026', onlinePeriod: '26 MARS — 6 AVRIL' },
-        { id: 'metz', name: 'METZ', date: '30 MAI 2026', tag: 'DÉPARTEMENT 57', inscriptionEnd: '27 AVRIL 2026', onlinePeriod: '30 AVRIL — 10 MAI' },
-        { id: 'strasbourg', name: 'STRASBOURG', date: '20 JUIN 2026', tag: 'DÉPARTEMENT 67', inscriptionEnd: '22 MAI 2026', onlinePeriod: '26 MAI — 7 JUIN' }
+        { id: 'reims', name: 'REIMS', date: '100% ONLINE', tag: 'DÉPARTEMENT 51', inscriptionEnd: '04 AVRIL 2026', onlinePeriod: '12 AVRIL — 25 AVRIL' },
+        { id: 'metz', name: 'METZ', date: '100% ONLINE', tag: 'DÉPARTEMENT 57', inscriptionEnd: '1er MAI 2026', onlinePeriod: '11 MAI — 30 MAI' },
+        { id: 'strasbourg', name: 'STRASBOURG', date: 'ONLINE ET ÉVÉNEMENT PHYSIQUE', tag: 'DÉPARTEMENT 67', inscriptionEnd: '22 MAI 2026', onlinePeriod: '26 MAI — 7 JUIN' }
     ];
 
     return (
@@ -25,7 +25,7 @@ const Cities = () => {
                             <div className="city-content">
                                 <span className="city-tag">{city.tag}</span>
                                 <h3 className="city-name">{city.name}</h3>
-                                <p className="city-detail">{city.date} • CHAMPIONNAT RÉGIONAL</p>
+                                <p className="city-detail">{city.date}</p>
                                 <p className="city-detail" style={{ fontSize: '0.85rem', marginBottom: '5px', opacity: 0.85 }}>
                                     <i className="fa-solid fa-clock" style={{ marginRight: '5px', color: 'var(--ce-red)' }}></i>
                                     Fin des inscriptions : {city.inscriptionEnd}

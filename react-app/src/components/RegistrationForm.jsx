@@ -115,9 +115,9 @@ const RegistrationForm = () => {
                             <label className="form-label">Confirme ta ville de qualification</label>
                             <select name="city" className="form-input" value={formData.city} onChange={handleChange} required>
                                 <option value="">-- Sélectionne une ville --</option>
-                                <option value="Reims">Reims - 18 Avril 2026</option>
-                                <option value="Metz">Metz - 30 Mai 2026</option>
-                                <option value="Strasbourg">Strasbourg - 20 Juin 2026</option>
+                                <option value="Reims">Reims - 100% Online</option>
+                                <option value="Metz">Metz - 100% Online</option>
+                                <option value="Strasbourg">Strasbourg - Online et événement physique</option>
                             </select>
                         </div>
 
