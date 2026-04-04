@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getAssetPath } from '../utils/paths';
 
+// Villes dont les inscriptions sont fermées
+const closedCities = ['reims'];
+
 const RegistrationForm = () => {
     const { cityId } = useParams();
     const navigate = useNavigate();
@@ -25,9 +28,13 @@ const RegistrationForm = () => {
 
     const cityName = cityNames[cityId] || 'INSCRIPTION';
 
+    // Rediriger si la ville est fermée aux inscriptions
     useEffect(() => {
+        if (closedCities.includes(cityId)) {
+            navigate('/');
+        }
         window.scrollTo(0, 0);
-    }, []);
+    }, [cityId, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -115,7 +122,6 @@ const RegistrationForm = () => {
                             <label className="form-label">Confirme ta ville de qualification</label>
                             <select name="city" className="form-input" value={formData.city} onChange={handleChange} required>
                                 <option value="">-- Sélectionne une ville --</option>
-                                <option value="Reims">Reims - 100% Online</option>
                                 <option value="Metz">Metz - 100% Online</option>
                                 <option value="Strasbourg">Strasbourg - Online et événement physique</option>
                             </select>
@@ -123,7 +129,7 @@ const RegistrationForm = () => {
 
                         <div className="checkbox-group">
                             <input type="checkbox" id="rgpd" required />
-                            <label htmlFor="rgpd">J'accepte le <a href={getAssetPath('assets/reglement-complet-qualifiers-fc26-hoplan-2026.pdf')} target="_blank" style={{ color: 'var(--ce-red)', textDecoration: 'underline' }}>règlement officiel</a> et j'autorise l'Alsace Esport Arena à me
+                            <label htmlFor="rgpd">J'accepte le <a href={getAssetPath('assets/reglement-complet-qualifier-fc26-hoplan-2026-final.pdf')} target="_blank" style={{ color: 'var(--ce-red)', textDecoration: 'underline' }}>règlement officiel</a> et j'autorise l'Alsace Esport Arena à me
                                 contacter pour l'organisation du tournoi.</label>
                         </div>
 

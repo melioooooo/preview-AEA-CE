@@ -182,6 +182,13 @@ function playin_plugin_handle_registration($request)
         return new WP_Error('missing_data', 'Missing required fields', array('status' => 400));
     }
 
+    // Villes dont les inscriptions sont fermées
+    $closed_cities = array('Reims');
+    $city = sanitize_text_field($params['city']);
+    if (in_array($city, $closed_cities)) {
+        return new WP_Error('registration_closed', 'Les inscriptions pour ' . $city . ' sont fermées.', array('status' => 403));
+    }
+
     // Check if the email is already registered across any city
     $existing_registration = get_posts(array(
         'post_type' => 'registration',
