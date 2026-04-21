@@ -8,7 +8,7 @@ const Cities = () => {
     const cityData = [
         { id: 'reims', name: 'REIMS', date: '100% ONLINE', tag: 'DÉPARTEMENT 51', inscriptionEnd: '04 AVRIL 2026', onlinePeriod: '12 AVRIL — 25 AVRIL', closed: true },
         { id: 'metz', name: 'METZ', date: '100% ONLINE', tag: 'DÉPARTEMENT 57', inscriptionEnd: '1er MAI 2026', onlinePeriod: '11 MAI — 30 MAI' },
-        { id: 'strasbourg', name: 'STRASBOURG', date: 'ONLINE ET ÉVÉNEMENT PHYSIQUE', tag: 'DÉPARTEMENT 67', inscriptionEnd: '22 MAI 2026', onlinePeriod: '26 MAI — 7 JUIN' }
+        { id: 'strasbourg', name: 'STRASBOURG', date: 'ONLINE ET ÉVÉNEMENT PHYSIQUE', tag: 'DÉPARTEMENT 67', inscriptionEnd: '08 MAI 2026', onlinePeriod: '26 MAI — 7 JUIN' }
     ];
 
     return (
