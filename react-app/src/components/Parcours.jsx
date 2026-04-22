@@ -20,7 +20,7 @@ const Parcours = () => {
                         <div style={{ margin: '15px 0', fontSize: '0.85rem', color: '#ccc', lineHeight: '1.6' }}>
                             <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Reims :</strong> 12 avril — 25 avril</p>
                             <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Metz :</strong> 11 mai — 30 mai</p>
-                            <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Strasbourg :</strong> 26 mai — 7 juin</p>
+                            <p style={{ marginBottom: '4px' }}><strong style={{ color: 'var(--ce-red)' }}>Strasbourg :</strong> 9 mai — 7 juin</p>
                         </div>
                         <p className="step-desc" style={{ fontSize: '0.75rem', opacity: 0.7, fontStyle: 'italic', marginTop: '10px' }}>
                             Selon le niveau de remplissage, les administrateurs se réservent le droit de modifier ou réajuster les dates. Les éventuelles modifications seront annoncées dans l'onglet « Annonce » du Discord.
