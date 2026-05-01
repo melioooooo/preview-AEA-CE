@@ -183,7 +183,7 @@ function playin_plugin_handle_registration($request)
     }
 
     // Villes dont les inscriptions sont fermées
-    $closed_cities = array('Reims');
+    $closed_cities = array('Reims', 'Metz');
     $city = sanitize_text_field($params['city']);
     if (in_array($city, $closed_cities)) {
         return new WP_Error('registration_closed', 'Les inscriptions pour ' . $city . ' sont fermées.', array('status' => 403));

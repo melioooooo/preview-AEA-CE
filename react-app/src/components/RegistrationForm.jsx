@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getAssetPath } from '../utils/paths';
 
 // Villes dont les inscriptions sont fermées
-const closedCities = ['reims'];
+const closedCities = ['reims', 'metz'];
 
 const RegistrationForm = () => {
     const { cityId } = useParams();
@@ -122,7 +122,6 @@ const RegistrationForm = () => {
                             <label className="form-label">Confirme ta ville de qualification</label>
                             <select name="city" className="form-input" value={formData.city} onChange={handleChange} required>
                                 <option value="">-- Sélectionne une ville --</option>
-                                <option value="Metz">Metz - 100% Online</option>
                                 <option value="Strasbourg">Strasbourg - Online et événement physique</option>
                             </select>
                         </div>
